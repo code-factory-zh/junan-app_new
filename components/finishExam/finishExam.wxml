@@ -1,0 +1,11 @@
+<!--finishExam.wxml-->
+<view class="win {{showFlag?'show':''}}" bindtap="_close">
+    <view class="inner" catch:tap="prevent">
+    	 <view class="examCanvasContainer {{showFlag?'':'hide'}}">
+    	 	<canvas canvas-id="examCanvas" class="examCanvas"></canvas>
+    	 </view>
+    	 <view class="leftTime">剩余时间： {{countDown}}</view>
+    	 <view class="commit" bindtap="finishExam">现在交卷</view>
+    	 <view class="notCommit" bindtap="_close">继续做题</view>
+    </view>
+</view>

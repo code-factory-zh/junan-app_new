@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/chapterList/chapterList",
+    "pages/text/text",
+    "pages/courseList/courseList",
+    "pages/mutipleChooice/mutipleChooice",
+    "pages/judge/judge",
+    "pages/scoreInfo/scoreInfo",
+    "pages/selectQuestion/selectQuestion",
+    "pages/score/score",
+    "pages/singleChoose/singleChoose"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

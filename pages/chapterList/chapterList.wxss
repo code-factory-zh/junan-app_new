@@ -1,0 +1,95 @@
+/* pages/chapterList/chapterList.wxss */
+.container{
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+.tab{
+    height: 90rpx;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.half{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.normal{
+    font-size: 28rpx;
+    color: #666;
+    line-height: 70rpx;
+    border-bottom: 4rpx solid transparent;
+}
+.on1{
+    color: #0084ff;
+    border-bottom: 4rpx solid #0084ff;
+}
+.video{
+    width: 100%;
+    height: 422rpx;
+    position: fixed;
+    left: 0;
+    top: 120rpx;
+    z-index: 2;
+}
+.chapter{
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    top:90rpx;
+    width: 690rpx;
+    margin: 30rpx auto;
+    background: #fff;
+    border-radius: 6rpx;
+    box-shadow: 2rpx 2rpx 5rpx #eee;
+    padding: 35rpx 40rpx 35rpx 40rpx;
+    box-sizing: border-box;
+}
+.inner{
+    position: relative;
+}
+.line{
+    position:absolute;
+    width: 2rpx;
+    left: 8rpx;
+    top: 0;
+    height: 100%;
+    padding: 20rpx 0;
+    box-sizing: border-box;
+}
+.line2{
+    height: 100%;
+    background: #eee;
+}
+.title{
+    font-size: 30rpx;
+    color: #5a5a5a;
+    position: relative;
+    padding: 6rpx 0 16rpx 35rpx;
+    line-height: 46rpx;
+}
+.title.on{
+    color: #0084ff;
+}
+.circle{
+    position: absolute;
+    width: 20rpx;
+    height: 20rpx;
+    background: #999;
+    left: 0rpx;
+    top: 20rpx;
+    border-radius: 50%;
+}
+.title.on .circle{
+    background: #0084ff;
+}
+.tabAndChpater{
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+}

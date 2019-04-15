@@ -1,0 +1,22 @@
+<!--text.wxml-->
+<view class="container" style="padding-top:{{navHeight}}px">
+    <view class="pageHead" style="height:{{navHeight}}px">
+        <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
+        <text class="headerTitle" style="top:{{titleTop}}px">{{chapterData.course_name}}</text>
+    </view>
+    <!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>{{chapterData.course_name}}</view> -->
+    <view class="title">第{{chapterData.num}}章：{{chapterData.chapter_name}}</view>
+    <view class="content">{{chapterData.content}}</view>
+    <view class="fixeBtn">
+        <view class="shang" bindtap="goShang">上一章</view>
+        <view class="mulu" bindtap="getCourseData">目录</view>
+        <view class="xia" bindtap="goXia">下一章</view>
+    </view>
+    <view class="selChapter" wx:if="{{isShowSelChapter}}" bindtap="_close">
+        <scroll-view scroll-y="true" class="scrollContent">
+            <view class="selDiv" catchtap="prevent">
+                <view class="chapters" wx:for="{{chapterList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="checkType">第{{index+1}}章：{{item.chapter_name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

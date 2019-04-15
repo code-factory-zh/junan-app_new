@@ -1,0 +1,27 @@
+/* pages/index/index.wxss */
+.container{
+    background: #f5f5f5;
+}
+.slider{
+    height: 300rpx;
+    margin-top: 40rpx;
+}
+.sliderImg{
+    height: 297rpx;
+    width: 640rpx;
+}
+.knowlage{
+    width: 260rpx;
+    height: 203rpx;
+    border-radius: 20rpx;
+}
+.menu{
+    width:565rpx;
+    margin: 80rpx auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+.goBackImg{
+    width: 40rpx !important;
+    height: 40rpx !important;
+}

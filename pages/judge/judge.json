@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "finishExam": "/components/finishExam/finishExam"
+  }
+}

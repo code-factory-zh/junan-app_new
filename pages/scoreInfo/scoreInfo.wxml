@@ -1,0 +1,13 @@
+<!--scoreInfo.wxml-->
+<view class="container">
+    <view class="content">
+        <!-- <view class="pageHead"><image src="/static/img/common/icon-left-white.png" class="goBackImg" bindtap="goBack"></image>考试成绩</view> -->
+        <view class="pageHead" style="height:{{navHeight}}px">
+	        <image src="/static/img/common/icon-left-white.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
+	        <text class="headerTitle" style="top:{{titleTop}}px;color:#fff">考试成绩</text>
+	    </view>
+        <image src="/static/img/scoreInfo/scoreBack.png" class="backImg"></image>
+        <canvas canvas-id="scoreCanvas" class="scoreCanvas"></canvas>
+    </view>
+    <button plain class="btn" bindtap="goBack">继续练习</button>
+</view>

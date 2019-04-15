@@ -1,0 +1,17 @@
+<!--score.wxml-->
+<view class="container" style="padding-top:{{navHeight}}px">
+    <view class="pageHead" style="height:{{navHeight}}px">
+        <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
+        <text class="headerTitle" style="top:{{titleTop}}px">我的成绩</text>
+    </view>
+    <!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>我的成绩</view> -->
+    <view class="title">历史成绩</view>
+    <view wx:key="index" wx:for="{{list}}" class="line">
+        <view class="name">
+            <image src="/static/img/score/redBar.png" class="redBar"></image>{{item.name}}
+            <text class="red">{{item.score}}</text>分
+        </view>
+        <text class="date">{{item.use_time}}</text>
+        <text class="date">{{item.created_time}}</text>
+    </view>
+</view>

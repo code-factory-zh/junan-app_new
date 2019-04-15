@@ -1,0 +1,53 @@
+/* components/cantExam/cantExam.wxss */
+.win{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s;
+}
+.win.show{
+    visibility: visible;
+    opacity: 1;
+}
+.inner{
+    width: 500rpx;
+    height: 542rpx;
+    background: #fff;
+    border-radius: 16rpx;
+    position: relative;
+}
+.close{
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+    width: 44rpx;
+    height: 44rpx;
+}
+.txt{
+    font-size: 40rpx;
+    color:#5a5a5a;
+    padding: 150rpx 50rpx 0;
+    line-height: 60rpx;
+    text-align: center;
+}
+.copyThat{
+    width: 461rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #6597ed;
+    color: #fff;
+    border-radius: 40rpx;
+    position: absolute;
+    bottom: 50rpx;
+    left: 20rpx;
+    font-size: 30rpx;
+}

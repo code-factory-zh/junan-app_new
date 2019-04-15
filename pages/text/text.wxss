@@ -1,0 +1,82 @@
+/* pages/text/text.wxss */
+.title{
+    text-align: center;
+    font-size: 38rpx;
+    color: #333;
+    margin: 40rpx 0 40rpx;
+}
+.content{
+    padding: 0 45rpx 200rpx;
+    font-size: 30rpx;
+    color: #666;
+    line-height: 50rpx;
+}
+.fixeBtn{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 30rpx;
+    width: 650rpx;
+    height: 88rpx;
+    border-radius: 88rpx;
+    box-shadow: 0 1px 35px 2px #ccc;
+    background: #fff;
+}
+.shang,.xia,.mulu{
+    position: absolute;
+    top:0;
+    text-align: center;
+    line-height: 88rpx;
+    font-size:30rpx;
+}
+.shang,.xia{
+    width: 33%;
+    color: #666;
+}
+.mulu{
+    width: 34%;
+}
+.shang{
+    left:0;
+}
+.xia{
+    right:0;
+}
+.mulu{
+    left:33%;
+     color: #77aafd;
+}
+.shang,.mulu{
+    border-right: 2rpx solid #eee;
+}
+/*目录*/
+.selChapter{
+    position: fixed;
+    left: 0;
+    top: 116rpx;
+    right: 0;
+    bottom: 0;
+    background:rgba(0,0,0,.8);
+}
+.scrollContent{
+    height: 100%;
+    background: #fff;
+    width:398rpx;
+}
+.selDiv{
+    height:100%;
+    width: 398rpx;
+    background: #fff;
+}
+.chapters{
+    border-top: 2rpx solid #eee;
+    border-bottom: 2rpx solid #eee;
+    height: 92rpx;
+    line-height: 92rpx;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    padding:0 20rpx 0 20rpx;
+    font-size: 30rpx;
+    color:#333;
+}

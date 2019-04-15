@@ -1,0 +1,39 @@
+/* pages/scoreInfo/scoreInfo.wxss */
+.content{
+    position: relative;
+}
+.pageHead{
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    z-index: 2;
+}
+.backImg{
+    position:absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 716rpx;
+}
+.scoreCanvas{
+    position: absolute;
+    width: 385rpx;
+    height: 385rpx;
+    left: 50%;
+    top: 150rpx;
+    transform: translate(-50%);
+}
+.btn{
+    position: fixed;
+    height: 88rpx;
+    left: 50%;
+    bottom: 217rpx;
+    transform: translate(-50%);
+    width: 500rpx;
+    color: #6fa0f5 !important;
+    border-color:#6fa0f5 !important;
+    border-radius: 88rpx;
+}

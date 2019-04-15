@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container" style="padding-top:{{navHeight}}px">
+    <view class="pageHead" style="height:{{navHeight}}px">
+        <image src="/static/img/index/logOut.png" class="goBackImg" style="top:{{backImgTop-3}}px" bindtap="goBack"></image>
+        <text class="headerTitle" style="top:{{titleTop}}px">安全工程宝典</text>
+    </view>
+    <swiper class="slider" duration="{{300}}" previous-margin="53rpx" next-margin="30rpx" current="0">
+        <!--<image src="/static/img/index/img1.png" class="sliderImg" bindtouchstart="touchStart" bindtouchend="touchEnd" ></image>-->
+        <swiper-item>
+            <image src="/static/img/index/img1.png" class="sliderImg"></image>
+        </swiper-item>
+    </swiper>
+    <view class="menu">
+        <image src="/static/img/index/knowlage.png" class="knowlage" bindtap="goCourseList"></image>
+        <image src="/static/img/index/score.png" class="knowlage" bindtap="goScore"></image>
+    </view>
+</view>

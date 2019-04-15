@@ -1,0 +1,8 @@
+<!--cantExam.wxml-->
+<view class="win {{showFlag?'show':''}}" bindtap="_close">
+    <view class="inner" catch:tap="prevent">
+        <image src="/static/img/courseList/close.png" class="close" bindtap="_close"></image>
+        <view class="txt">要学习完当前课程所有章节才可考试喔！</view>
+        <button class="copyThat" bindtap="_close">知道了</button>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+<!--selectQuestion.wxml-->
+<view class="container" style="padding-top:{{navHeight}}px">
+	<view class="pageHead" style="height:{{navHeight}}px">
+        <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
+        <text class="headerTitle" style="top:{{titleTop}}px">选择题目</text>
+    </view>
+ 	<!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>选择题目</view> -->
+ 	<view class="questions">
+ 		<view class="circle {{item.is_answer==1?'on':''}}" wx:for="{{questionList}}" wx:key="{{index}}" bindtap="choose" data-item="{{item}}">{{item.question_id}}</view>
+ 	</view>
+</view>

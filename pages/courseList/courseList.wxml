@@ -1,0 +1,20 @@
+<!--courseList.wxml-->
+<view class="container" style="padding-top:{{navHeight}}px">
+    <view class="pageHead" style="height:{{navHeight}}px">
+        <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
+        <text class="headerTitle" style="top:{{titleTop}}px">知识学堂</text>
+    </view>
+    <!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>知识学堂</view> -->
+    <image src="{{bannerUrl}}" class="banner"></image>
+    <view class="line" bindtap="goChapter" data-item="{{item}}" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="courseInfo">
+            <view class="courseName">{{item.name}}</view>
+            <view class="chapter">
+                <text>总章节 </text><text class="num" style="margin-right: 100rpx;">{{item.total_chapter}}</text>
+                <text>已学习 </text><text class="num">{{item.studied}}</text>
+            </view>
+        </view>
+        <button class="examBtn {{item.finished==1?'redBtn':'disabledBtn'}}" plain="true" size="mini" catchtap="goExam" data-item="{{item}}">{{item.btn}}</button>
+    </view>
+</view>
+<cantExam id="cantExam"></cantExam>

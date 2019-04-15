@@ -1,0 +1,23 @@
+<!--chapterList.wxml-->
+<view class="container" style="padding-top: {{navHeight}}px">
+    <view class="pageHead" style="height:{{navHeight}}px">
+        <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
+        <text class="headerTitle" style="top:{{titleTop}}px">{{courseName}}</text>
+    </view>
+    <video class="video" style="top:{{navHeight}}px;height:211px;" wx:if="{{isShowVideo}}" src="{{videoUrl}}" controls></video>
+    <view class="tabAndChpater" style="top:{{(isShowVideo?211:0)+navHeight}}px">
+        <view class="tab">
+            <view class="half" bindtap="toggleTab" data-num="1"><text class="normal {{tab===1?'on1':''}}" data-num="1">简介</text></view>
+            <view class="half" bindtap="toggleTab" data-num="2"><text class="normal {{tab===2?'on1':''}}" data-num="2">章节</text></view>
+        </view>
+        <scroll-view scroll-y="true" class="chapter" wx:if="{{tab===2}}">
+            <view class="inner">
+                <view class="line"><view class="line2"></view></view>
+                <view class="title {{chapter_id==item.id?'on':''}}" wx:for="{{chapterList}}" wx:key="{{index}}" bindtap="checkChapterType" data-item="{{item}}"><view class="circle"></view>{{item.num}} {{item.chapter_name}}</view>
+            </view>
+        </scroll-view>
+        <scroll-view scroll-y="true" class="chapter" wx:if="{{tab===1}}">
+            {{course_into}}
+        </scroll-view>
+    </view>
+</view>
