@@ -16,8 +16,6 @@ Page({
     },
     onLoad: function () {
         this.checkVersion()
-        this.checkToken()
-        // this.getCompanys()
     },
     // 搜索企业列表
     searchCompany: function () {
@@ -58,13 +56,8 @@ Page({
             // 版本过低
             wx.showModal({
                 title: '提示',
-                content: '当前微信版本过低，请升级到最新微信版本后重试。',
-                complete: () => {
-                    this.checkToken()
-                }
+                content: '当前微信版本过低，请升级到最新微信版本后重试。'
             })
-        } else {
-            this.checkToken()
         }
     },
     // 验证用户使用的微信版本号是否合适
@@ -73,21 +66,6 @@ Page({
         let flag = null
         flag = compareVersion(datas.SDKVersion, this.data.limitSDKVersion)
         return flag
-    },
-    // 检查token
-    checkToken: function () {
-      if (wx.getStorageSync('token')) {
-        Login._checkToken().then(result => {
-          let res = result.data
-          if (res.code == 0) {
-            wx.navigateTo({
-              url: '/pages/index/index'
-            })
-          } else {
-            wx.removeStorageSync('token')
-          }
-        })
-      }
     },
     /**
      * 得到公司列表

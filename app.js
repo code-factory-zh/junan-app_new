@@ -26,30 +26,18 @@ App({
             Login._checkToken().then(result => {
                 let res = result.data
                 if (res.code == 0) {
+                    wx.reLaunch({
+                        url: '/pages/index/index'
+                    })
                 } else {
                     signal = true
                 }
             })
         } else { // 没token直接到login页
-            signal = false
-            wx.reLaunch({
-                url: '/pages/login/login'
-            })
+            signal = true
         }
         if (signal) { // 有token但是token不对，提示并跳转
             wx.removeStorageSync('token')
-            wx.showToast({
-                title: '登录过期！',
-                icon: 'none',
-                duration: 2000,
-                complete: function () {
-                    setTimeout(() => {
-                        wx.reLaunch({
-                            url: '/pages/login/login'
-                        })
-                    }, 2000)
-                }
-            })
         }
     },
     globalData: {
