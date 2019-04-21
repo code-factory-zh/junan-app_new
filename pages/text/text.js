@@ -64,11 +64,10 @@ Page({
             course_id: this.data.course_id
         }).then(result => {
             let res = result.data
-            console.log(res)
             if (res.code == 0) {
                 this.setData({
                     chapterData: res.data
-                }) 
+                })
             } else {
                 wx.showToast({
                     title: res.msg,

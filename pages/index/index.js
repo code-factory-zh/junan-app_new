@@ -10,7 +10,7 @@ Page({
         titleTop: app.globalData.titleTop
     },
     goBack: function () {
-        wx.removeStorageSync('token')
+        wx.removeStorageSync('open_id')
         wx.reLaunch({
             url: '/pages/login/login'
         })

@@ -22,7 +22,7 @@ App({
     // 检查token
     checkToken: function () {
         let signal = false // 是否过期
-        if (wx.getStorageSync('token')) { // 有token检查token
+        if (wx.getStorageSync('open_id')) { // 有token检查token
             Login._checkToken().then(result => {
                 let res = result.data
                 if (res.code == 0) {
@@ -37,7 +37,7 @@ App({
             signal = true
         }
         if (signal) { // 有token但是token不对，提示并跳转
-            wx.removeStorageSync('token')
+            wx.removeStorageSync('open_id')
         }
     },
     globalData: {

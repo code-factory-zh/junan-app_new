@@ -1,5 +1,5 @@
 <!--finishExam.wxml-->
-<view class="win {{showFlag?'show':''}}" bindtap="_close">
+<view class="win {{showFlag?'show':''}}" bindtap="">
     <view class="inner" catch:tap="prevent">
     	 <view class="examCanvasContainer {{showFlag?'':'hide'}}">
     	 	<canvas canvas-id="examCanvas" class="examCanvas"></canvas>

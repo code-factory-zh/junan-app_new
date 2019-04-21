@@ -5,11 +5,11 @@
         <text class="headerTitle" style="top:{{titleTop}}px">考试</text>
     </view>
     <!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>考试</view> -->
-    <view class="examBack">
+    <view class="examBack" style="top:{{navHeight}}px">
         <image src="/static/img/singleChoose/examBack.png" class="examBackImg"></image>
         <view class="countDown">倒计时 {{countDown}}</view>
     </view>
-    <view scroll-y="true" class="questionContent">
+    <view scroll-y="true" class="questionContent" style="top:{{navHeight}}px">
         <scroll-view scroll-y="true" class="question">
             <view class="title"><view class="type">判断题</view>{{title}}</view>
             <view class="option {{answerIndex==index?'on':''}}" wx:for="{{optionList}}" wx:key="{{index}}" bindtap="choose" data-index="{{index}}"><text>{{letter[index]}}、</text>{{item}}</view>

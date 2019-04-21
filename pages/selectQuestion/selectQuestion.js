@@ -34,34 +34,37 @@ Page({
     },
     // 请求第now_question_id个问题，看看是什么类型再决定跳转到哪里,1=单选 2=多选 3=判断
     goTo: function (now_question_id) {
-        CourseList._getQuestion({
-            question_id: now_question_id,
-            exam_question_id: this.data.exam_question_id
-        }).then(result => {
-            let res = result.data
-            if (res.code == 0) {
-                wx.setStorageSync('now_question_id', now_question_id)
-                if (res.data.type == 1) {
-                    wx.redirectTo({
-                        url: '/pages/singleChoose/singleChoose'
-                    })
-                } else if (res.data.type == 2) {
-                    wx.redirectTo({
-                         url: '/pages/mutipleChooice/mutipleChooice'
-                    })
-                } else if (res.data.type ==3) {
-                    wx.redirectTo({
-                        url: '/pages/judge/judge'
-                    })
-                }
-            } else {
-                 wx.showToast({
-                    title: res.msg,
-                    icon: 'none',
-                    duration: 2000
-                })
-            }
+        wx.setStorageSync('now_question_id', now_question_id)
+        wx.redirectTo({
+            url: '/pages/questions/questions'
         })
+        // CourseList._getQuestion({
+        //     question_id: now_question_id,
+        //     exam_question_id: this.data.exam_question_id
+        // }).then(result => {
+        //     let res = result.data
+        //     if (res.code == 0) {
+        //         // if (res.data.type == 1) {
+        //         //     wx.redirectTo({
+        //         //         url: '/pages/singleChoose/singleChoose'
+        //         //     })
+        //         // } else if (res.data.type == 2) {
+        //         //     wx.redirectTo({
+        //         //          url: '/pages/mutipleChooice/mutipleChooice'
+        //         //     })
+        //         // } else if (res.data.type ==3) {
+        //         //     wx.redirectTo({
+        //         //         url: '/pages/judge/judge'
+        //         //     })
+        //         // }
+        //     } else {
+        //          wx.showToast({
+        //             title: res.msg,
+        //             icon: 'none',
+        //             duration: 2000
+        //         })
+        //     }
+        // })
     },
     getQuestionList () {
         wx.showLoading({

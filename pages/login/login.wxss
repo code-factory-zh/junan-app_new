@@ -26,48 +26,66 @@
     text-align: center;
 }
 /* 公司名选择框 */
-.picker{
-    height: 108rpx;
-    margin: 0 50rpx;
-    line-height: 108rpx;
-    border: 2rpx solid #f2f2f2;
-    border-radius: 54rpx;
-    text-align: center;
-    font-size: 30rpx;
-    color: #999;
-    position: relative;
-}
-.downArrow{
-    position: absolute;
-    right: 50rpx;
-    top: 46rpx;
-    width: 28rpx;
-    height: 16rpx;
-}
-.pleaseSel,.haveSelect{
-    color: #999;
-    font-size: 30rpx;
-}
+/*.picker{*/
+    /*height: 108rpx;*/
+    /*margin: 0 50rpx;*/
+    /*line-height: 108rpx;*/
+    /*border: 2rpx solid #f2f2f2;*/
+    /*border-radius: 54rpx;*/
+    /*text-align: center;*/
+    /*font-size: 30rpx;*/
+    /*color: #999;*/
+    /*position: relative;*/
+/*}*/
+/*.downArrow{*/
+    /*position: absolute;*/
+    /*right: 50rpx;*/
+    /*top: 46rpx;*/
+    /*width: 28rpx;*/
+    /*height: 16rpx;*/
+/*}*/
+/*.pleaseSel,.haveSelect{*/
+    /*color: #999;*/
+    /*font-size: 30rpx;*/
+/*}*/
 /* 手机号输入框 */
-.inputTel{
-    margin: 60rpx 50rpx 50rpx;
-    height: 108rpx;
-    border: 2rpx solid #f2f2f2;
-    border-radius: 54rpx;
+/*.inputTel{*/
+    /*margin: 60rpx 50rpx 50rpx;*/
+    /*height: 108rpx;*/
+    /*border: 2rpx solid #f2f2f2;*/
+    /*border-radius: 54rpx;*/
+    /*font-size: 30rpx;*/
+    /*color: #999;*/
+    /*text-align: center;*/
+/*}*/
+.title{
+    height: 40rpx;
     font-size: 30rpx;
-    color: #999;
+    color: rbg(0,0,0);
     text-align: center;
+    margin: 30rpx auto 30rpx;
 }
-/* 登录按钮 */
-.loginContainer{
-    box-sizing: border-box;
-    padding: 0 50rpx;
-    width: 100%;
-    position: fixed;
-    bottom: 82rpx;
-    left:0;
+/*输入框*/
+.inputStyle, .picker{
+    margin: 0 50rpx 25rpx;
+    height: 88rpx;
+    border: 2rpx solid #f2f2f2;
+    border-radius: 44rpx;
+    font-size: 30rpx;
+    color: rgb(51,51,51);
+    padding-left: 40rpx;
+    line-height: 88rpx;
 }
+/*相机*/
+.camera{
+    width: 300rpx;
+    height: 370rpx;
+    margin: 85rpx auto;
+    display: block;
+}
+/*!* 登录按钮 *!*/
 .loginBtn{
+    margin: 0 50rpx 80rpx;
     height: 108rpx;
     background: #77aafd;
     color: #fefefe;
@@ -78,3 +96,4 @@
 .loginBtnActive{
     background: #5493fb;
 }
+

@@ -45,7 +45,6 @@ Page({
             wx.hideLoading()
             let res = result.data
             if (parseInt(res.code) === 0) {
-                console.log(res)
                 this.setData({
                     bannerUrl: res.data.banner,
                     list: res.data.list
@@ -64,7 +63,7 @@ Page({
     **/
     goExam: function (event) {
         let item = event.currentTarget.dataset['item']
-        if (parseInt(item.finished) === 1) {
+        if (parseInt(item.finished) !== 0) {
             wx.showLoading({
                 title: '加载中',
                 mask: true
@@ -74,7 +73,6 @@ Page({
             }).then(result => {
                 let res = result.data
                 if (parseInt(res.code) === 0) {
-                    console.log(res)
                     // 已经有分数了，跳转提示分数的页面
                     if (res.data.hasOwnProperty('score')) {
                         wx.hideLoading()
@@ -82,7 +80,6 @@ Page({
                           url: '/pages/scoreInfo/scoreInfo?score=' + res.data.score
                         })
                     } else {
-                        console.log(item.course_id)
                         this.getFirstQuestionType(item.course_id)
                     }
                 } else {
@@ -110,27 +107,31 @@ Page({
             let res = result.data
             if (res.code == 0) {
                 let type = res.data.first_question_info.type
+                wx.setStorageSync('type', type) // 第一题类型
                 wx.setStorageSync('exam_question_id', res.data.exam_question_id) // 这套试题id
                 wx.setStorageSync('total_question', res.data.count) // 题目总数
                 wx.setStorageSync('now_question_id', 1) // 当前题目id
                 let createTime = parseInt(res.data.exam_create_time) * 1000
                 let finishTime = createTime + parseInt(res.data.exam_time) * 60 * 1000
                 wx.setStorageSync('exam_finish_time', finishTime) // 对比这个时间戳，到了就强制提交考试成绩
-                if (type == 1) {
-                    wx.navigateTo({
-                      url: '/pages/singleChoose/singleChoose'
-                    })
-                } else if (type == 2) {
-                    console.log('多选')
-                    wx.navigateTo({
-                      url: '/pages/mutipleChooice/mutipleChooice'
-                    })
-                } else if (type == 3) {
-                    console.log('判断')
-                     wx.navigateTo({
-                      url: '/pages/judge/judge'
-                    })
-                }
+                wx.navigateTo({
+                  url: '/pages/questions/questions'
+                })
+                // if (type == 1) {
+                //     wx.navigateTo({
+                //       url: '/pages/singleChoose/singleChoose'
+                //     })
+                // } else if (type == 2) {
+                //     console.log('多选')
+                //     wx.navigateTo({
+                //       url: '/pages/mutipleChooice/mutipleChooice'
+                //     })
+                // } else if (type == 3) {
+                //     console.log('判断')
+                //      wx.navigateTo({
+                //       url: '/pages/judge/judge'
+                //     })
+                // }
             } else {
                 wx.showToast({
                     title: res.msg,

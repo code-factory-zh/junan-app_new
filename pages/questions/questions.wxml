@@ -1,4 +1,5 @@
-<!--mutipleChooice.wxml-->
+<!--singleChoose.wxml-->
+<script src="../mutipleChooice/mutipleChooice.js"></script>
 <view class="container">
     <view class="pageHead" style="height:{{navHeight}}px">
         <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
@@ -7,12 +8,26 @@
     <!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>考试</view> -->
     <view class="examBack" style="top:{{navHeight}}px">
         <image src="/static/img/singleChoose/examBack.png" class="examBackImg"></image>
-         <view class="countDown">倒计时 {{countDown}}</view>
+        <view class="countDown">倒计时 {{countDown}}</view>
     </view>
-    <view scroll-y="true" class="questionContent" style="top:{{navHeight}}px">
+    <view scroll-y="true" class="questionContent" style="top:{{navHeight}}px" wx:if="{{type==1}}">
+        <scroll-view scroll-y="true" class="question">
+            <view class="title"><view class="type">单选题</view>{{title}}</view>
+            <view class="option {{answerIndex==index?'on':''}}" wx:for="{{optionList}}" wx:key="{{index}}" bindtap="choose" data-index="{{index}}"><text>{{letter[index]}}、</text>{{item}}</view>
+            <button class="saveAnswer" bindtap="saveAnswer">确定</button>
+        </scroll-view>
+    </view>
+    <view scroll-y="true" class="questionContent" style="top:{{navHeight}}px" wx:elif="{{type==2}}">
         <scroll-view scroll-y="true" class="question">
             <view class="title"><view class="type">多选题</view>{{title}}</view>
             <view class="option {{isOnList[index]?'on':''}}" wx:for="{{optionList}}" wx:key="{{index}}" bindtap="choose" data-index="{{index}}"><text>{{letter[index]}}、</text>{{item}}</view>
+            <button class="saveAnswer" bindtap="saveAnswer">确定</button>
+        </scroll-view>
+    </view>
+    <view scroll-y="true" class="questionContent" style="top:{{navHeight}}px" wx:elif="{{type==3}}">
+        <scroll-view scroll-y="true" class="question">
+            <view class="title"><view class="type">判断题</view>{{title}}</view>
+            <view class="option {{answerIndex==index?'on':''}}" wx:for="{{optionList}}" wx:key="{{index}}" bindtap="choose" data-index="{{index}}"><text>{{letter[index]}}、</text>{{item}}</view>
             <button class="saveAnswer" bindtap="saveAnswer">确定</button>
         </scroll-view>
     </view>

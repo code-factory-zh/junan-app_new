@@ -2,7 +2,7 @@
 const baseUrl = 'https://study.joinersafe.com'
 function fetch(url, data, type) {
     let currentData = {
-        "token": wx.getStorageSync('token') || ''
+        "open_id": wx.getStorageSync('open_id') || ''
     }
     if (!data) {
         data = {}
@@ -18,7 +18,7 @@ function fetch(url, data, type) {
                     resolve(res)
                 } else {
                      try {
-                        wx.removeStorageSync('token')
+                        wx.removeStorageSync('open_id')
                         wx.showToast({
                           title: '登录过期！',
                           icon: 'none',

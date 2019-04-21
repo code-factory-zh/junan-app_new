@@ -10,14 +10,10 @@ Page({
         appName: '君安',
         array: [],
         index: '',
+        phone: '',
         code: '',
         open_id: '',
-        company_id: '33',
-        phone: '',
-        userName: '',
-        idcard: '',
-        date: '',
-        companyName: '',
+        company_id: '',
         limitSDKVersion: '1.9.0' // 版本兼容
     },
     onLoad: function (options) {
@@ -112,37 +108,28 @@ Page({
         })
     },
     /**
-     * input输入姓名
-     **/
-    bindInputName: function (e) {
+     * input输入改变手机号的值
+    **/
+    bindKeyInput: function (e) {
         this.setData({
-            userName: e.detail.value
+            phone: e.detail.value,
+            array: [],
+            index: ''
         })
     },
     /**
-     * input身份证
+     * 点击登录的回调
      **/
-    bindInputID: function (e) {
-        this.setData({
-            idcard: e.detail.value
+    getUserInfoCallback: function (userInfo) {
+        wx.showLoading({
+            title: '加载中',
+            mask: true
         })
-    },
-    /**
-     * input手机号码
-     **/
-    bindInputPhone: function (e) {
-        this.setData({
-            phone: e.detail.value
-        })
-    },
-    /**
-     * 选择入职日期
-     **/
-    bindDateChange (e) {
-        console.log(e.detail.value)
-        this.setData({
-            date: e.detail.value
-        })
+        if (userInfo.detail.errMsg === 'getUserInfo:ok') {
+            this.getLoginCode(userInfo)
+        } else {
+            console.log(userInfo)
+        }
     },
     /**
      * 得到登录用的code
@@ -155,7 +142,7 @@ Page({
                     code: res.code
                 },() => {
                     console.log(`code:${res.code}`)
-                    this.getOpenId()
+                    // this.getOpenId()
                 })
             }
         })
@@ -197,161 +184,47 @@ Page({
                 })
             } else {
                 wx.removeStorageSync('open_id')
-                this.getCompanyName()
             }
         })
     },
     /**
-     * 获取这个公司信息
+     * 登录
      */
-    getCompanyName () {
-        Login._getCompanyName({
-            open_id: this.data.open_id,
-            company_id: this.data.company_id
+    doLogin () {
+        if (this.data.index === '') {
+            wx.showToast({
+                title: '请选择企业',
+                icon: 'none',
+                duration: 2000
+            })
+            return false
+        }else if (this.data.phone === '') {
+            wx.showToast({
+                title: '请输入手机号',
+                icon: 'none',
+                duration: 2000
+            })
+            return false
+        }
+        Login._login({
+            code: this.data.code,
+            company_id: this.data.array[this.data.index].company_id,
+            mobile: this.data.phone
         }).then(result => {
-            let res = result.data
-            if (res.code === 0) {
-                if (res.data.company_name) {
-                    this.setData({
-                        companyName: res.data.company_name
-                    })
-                }
-            } else {
-                wx.showToast({
-                    title: res.msg,
-                    icon: 'none',
-                    duration: 2000
-                })
-            }
-        })
-    },
-    /**
-     * 注册检查输入
-     */
-    check () {
-        if (!this.data.open_id) {
-            wx.showToast({
-                title: '获取open_id失败',
-                icon: 'none',
-                duration: 2000
-            }, () => {
-                this.getLoginCode()
-            })
-            return false
-        }
-        if (!this.data.company_id) {
-            wx.showToast({
-                title: '获取company_id失败',
-                icon: 'none',
-                duration: 2000
-            })
-            return false
-
-        }
-        if (!this.data.userName) {
-            wx.showToast({
-                title: '请输入用户姓名',
-                icon: 'none',
-                duration: 2000
-            })
-            return false
-        }
-        if (!this.data.idcard) {
-            wx.showToast({
-                title: '请输入身份证',
-                icon: 'none',
-                duration: 2000
-            })
-            return false
-        }
-        if (!this.data.phone) {
-            wx.showToast({
-                title: '请输入您的手机号码',
-                icon: 'none',
-                duration: 2000
-            })
-            return false
-        }
-        return true
-    },
-    /**
-     * 注册
-     */
-    doRegister () {
-        let res = this.check()
-        if (!res) {
-            return false
-        }
-        let params = {
-            open_id: this.data.open_id,
-            company_id: this.data.company_id,
-            uname: this.data.userName,
-            card_num: this.data.idcard,
-            mobile: this.data.phone,
-            date: this.data.date
-        }
-        Login._register(params).then(result => {
-            let res = result.data
-            if (res.code === 0) {
-                wx.showToast({
-                    title: '注册成功！',
-                    icon: 'none',
-                    duration: 1000,
-                    complete: function () {
-                        wx.reLaunch({
-                            url: '/pages/index/index'
-                        })
-                    }
+            wx.hideLoading()
+            let login_res = result.data
+            if (login_res.code == 0) {
+                wx.setStorageSync('open_id', login_res.data.open_id)
+                wx.navigateTo({
+                    url: '/pages/index/index'
                 })
             } else {
                 wx.showToast({
-                    title: res.msg,
+                    title: login_res.msg,
                     icon: 'none',
                     duration: 2000
                 })
             }
         })
     }
-    /**
-     * 登录
-     */
-    // doLogin () {
-    //     console.log(this.data.userName, this.data.idcard, this.data.phone, this.data.date)
-    //     return false
-    //     if (this.data.index === '') {
-    //         wx.showToast({
-    //             title: '请选择企业',
-    //             icon: 'none',
-    //             duration: 2000
-    //         })
-    //         return false
-    //     }else if (this.data.phone === '') {
-    //         wx.showToast({
-    //             title: '请输入手机号',
-    //             icon: 'none',
-    //             duration: 2000
-    //         })
-    //         return false
-    //     }
-    //     Login._login({
-    //         code: this.data.code,
-    //         company_id: this.data.array[this.data.index].company_id,
-    //         mobile: this.data.phone
-    //     }).then(result => {
-    //         wx.hideLoading()
-    //         let login_res = result.data
-    //         if (login_res.code == 0) {
-    //             wx.setStorageSync('open_id', login_res.data.open_id)
-    //             wx.navigateTo({
-    //                 url: '/pages/index/index'
-    //             })
-    //         } else {
-    //             wx.showToast({
-    //                 title: login_res.msg,
-    //                 icon: 'none',
-    //                 duration: 2000
-    //             })
-    //         }
-    //     })
-    // }
 })

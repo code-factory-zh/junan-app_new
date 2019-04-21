@@ -5,12 +5,10 @@
     "pages/chapterList/chapterList",
     "pages/text/text",
     "pages/courseList/courseList",
-    "pages/mutipleChooice/mutipleChooice",
-    "pages/judge/judge",
     "pages/scoreInfo/scoreInfo",
     "pages/selectQuestion/selectQuestion",
     "pages/score/score",
-    "pages/singleChoose/singleChoose"
+    "pages/questions/questions"
   ],
   "window": {
     "backgroundTextStyle": "light",

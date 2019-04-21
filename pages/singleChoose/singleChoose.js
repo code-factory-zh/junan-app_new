@@ -35,6 +35,13 @@ Page({
             this.getQuestion()
         })
     },
+    onUnload: function () {
+        console.log(this.data.timer)
+        if (this.data.timer) {
+            clearInterval(this.data.timer)
+            console.log(this.data.timer)
+        }
+    },
     // 交卷
     finishExam: function () {
         CourseList._finishExam({
@@ -66,7 +73,7 @@ Page({
         let now = new Date().getTime()
         let timeExpire = expireTime - now
         if (timeExpire >= 0) { // 时间还有剩余就倒数
-             let mins = parseInt(timeExpire / 1000 / 60)
+            let mins = Math.floor(timeExpire / 1000 / 60)
             let seconds = parseInt(timeExpire / 1000 % 60)
             let time = mins + ':' + seconds
             this.setData({

@@ -5,15 +5,28 @@
         <image src="/static/img/login/logo.png" class="logoImg"></image>
         <text class="appName">{{appName}}</text>
     </view>
-    <input type="text" placeholder="请输入手机号" placeholder-style="color:#999;font-size:30rpx;" value="{{phone}}" bindinput="bindKeyInput" class="inputTel" bindblur="searchCompany"/>
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="{{'company_name'}}">
+    <!--<input type="text" placeholder="请输入手机号" placeholder-style="color:#999;font-size:30rpx;" value="{{phone}}" bindinput="bindKeyInput" class="inputTel" bindblur="searchCompany"/>-->
+    <!--<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="{{'company_name'}}">-->
+        <!--<view class="picker">-->
+            <!--<text wx:if="{{index===''}}" class="pleaseSel">请选择企业</text>-->
+            <!--<text wx:else class="haveSelect">{{array[index].company_name}}</text>-->
+            <!--<image src="/static/img/login/down.png" class="downArrow"></image>-->
+        <!--</view>-->
+    <!--</picker>-->
+    <view class="title">{{companyName}}</view>
+    <input type="text" placeholder="请输入您的姓名" class="inputStyle" bindinput="bindInputName" value="{{userName}}"/>
+    <input type="text" placeholder="请输入您的身份证号" class="inputStyle" bindinput="bindInputID" value="{{idcard}}"/>
+    <input type="text" placeholder="请输入您的手机号码" class="inputStyle" bindinput="bindInputPhone" value="{{phone}}"/>
+    <picker
+            mode="date"
+            value="{{date}}"
+            bindchange="bindDateChange"
+    >
         <view class="picker">
-            <text wx:if="{{index===''}}" class="pleaseSel">请选择企业</text>
-            <text wx:else class="haveSelect">{{array[index].company_name}}</text>
-            <image src="/static/img/login/down.png" class="downArrow"></image>
+            <span wx:if="{{date}}">{{date}}</span>
+            <span wx:else>请选择入职时间（非必填）</span>
         </view>
     </picker>
-    <view class="loginContainer">
-        <button class="loginBtn" hover-class="loginBtnActive" bindtap="getLoginCode">登录</button>
-    </view>
+    <image src="/static/img/login/camera.png" class="camera"></image>
+    <button class="loginBtn" hover-class="loginBtnActive" bindtap="doRegister">提交</button>
 </view>
