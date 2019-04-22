@@ -96,4 +96,21 @@
 .loginBtnActive{
     background: #5493fb;
 }
+.userImgWrap{
+    width:300rpx;
+    height:370rpx;
+    margin:85rpx auto;
+    display:block;
+}
+.userImg{
+    width: 300rpx;
+    height: 300rpx;
+}
+.alterImg{
+    width: 250rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    color: rgb(51,51,51);
+}
 

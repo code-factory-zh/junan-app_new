@@ -27,6 +27,10 @@
             <span wx:else>请选择入职时间（非必填）</span>
         </view>
     </picker>
-    <image src="/static/img/login/camera.png" class="camera"></image>
+    <image src="/static/img/login/camera.png" class="camera" bindtap="chooseImg" wx:if="{{img==''}}"></image>
+    <view class="userImgWrap" wx:else>
+        <image src="{{img}}" class="userImg"></image>
+        <button class="alterImg" bindtap="chooseImg">更换头像</button>
+    </view>
     <button class="loginBtn" hover-class="loginBtnActive" bindtap="doRegister">提交</button>
 </view>

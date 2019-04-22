@@ -18,6 +18,8 @@ Page({
         idcard: '',
         date: '',
         companyName: '',
+        img: '',
+        filepath: '',
         limitSDKVersion: '1.9.0' // 版本兼容
     },
     onLoad: function (options) {
@@ -288,7 +290,8 @@ Page({
             uname: this.data.userName,
             card_num: this.data.idcard,
             mobile: this.data.phone,
-            date: this.data.date
+            date: this.data.date,
+            pic: this.data.filepath
         }
         Login._register(params).then(result => {
             let res = result.data
@@ -309,6 +312,55 @@ Page({
                     icon: 'none',
                     duration: 2000
                 })
+            }
+        })
+    },
+    /**
+     * 选择图片
+     */
+    chooseImg (e) {
+        let that = this
+        wx.chooseImage({
+            sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
+            sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+            success: res => {
+                let image = res.tempFilePaths;
+                //启动上传等待中...
+                wx.showToast({
+                    title: '正在上传...',
+                    icon: 'loading',
+                    mask: true,
+                    duration: 10000
+                })
+                wx.uploadFile({
+                    url: 'https://study.joinersafe.com/wechat/index/uploadImg',
+                    filePath: image[0],
+                    name: 'file',
+                    success: function (res) {
+                        let data = JSON.parse(res.data)
+                        wx.hideToast();
+                        if (data.code === 0) {
+                            that.setData({
+                                img: 'https://study.joinersafe.com/' + data.data.filepath,
+                                filepath: data.data.filepath
+                            })
+                        } else {
+                            wx.showToast({
+                                title: data.msg,
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
+                    },
+                    fail: function (res) {
+                        wx.hideToast();
+                        wx.showModal({
+                            title: '错误提示',
+                            content: '上传图片失败',
+                            showCancel: false
+                        })
+                    }
+                });
             }
         })
     }
