@@ -12,7 +12,7 @@ Page({
         index: '',
         code: '',
         open_id: '',
-        company_id: '33',
+        company_id: '',
         phone: '',
         userName: '',
         idcard: '',
@@ -24,12 +24,20 @@ Page({
     },
     onLoad: function (options) {
         this.checkVersion()
-        this.getLoginCode()
         let company_id = options.company_id || ''
+        wx.showToast({
+            title: company_id,
+            icon: 'none',
+            duration: 2000
+        })
         if (company_id) {
             this.setData({
                 company_id: company_id
+            }, () => {
+                this.getLoginCode()
             })
+        } else {
+            this.getLoginCode()
         }
     },
     // 搜索企业列表

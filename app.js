@@ -36,7 +36,7 @@ App({
         } else { // 没token直接到login页
             signal = true
         }
-        if (signal) { // 有token但是token不对，提示并跳转
+        if (signal) { // 有token但是token不对
             wx.removeStorageSync('open_id')
         }
     },
