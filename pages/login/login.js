@@ -23,6 +23,8 @@ Page({
         limitSDKVersion: '1.9.0' // 版本兼容
     },
     onLoad: function (options) {
+        console.log(1)
+        console.log(options)
         this.checkVersion()
         let company_id = options.company_id || ''
         wx.showToast({
