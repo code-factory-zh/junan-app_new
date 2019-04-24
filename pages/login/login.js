@@ -25,13 +25,12 @@ Page({
     onLoad: function (options) {
         console.log(1)
         console.log(options)
+        let scene = decodeURIComponent(options.scene)
+        console.log('2')
+        console.log(scene)
         this.checkVersion()
-        let company_id = options.company_id || ''
-        wx.showToast({
-            title: company_id,
-            icon: 'none',
-            duration: 2000
-        })
+        let company_id = scene.split('=')[1]
+        console.log(company_id)
         if (company_id) {
             this.setData({
                 company_id: company_id
