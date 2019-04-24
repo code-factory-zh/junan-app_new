@@ -23,11 +23,7 @@ Page({
         limitSDKVersion: '1.9.0' // 版本兼容
     },
     onLoad: function (options) {
-        console.log(1)
-        console.log(options)
         let scene = decodeURIComponent(options.scene)
-        console.log('2')
-        console.log(scene)
         this.checkVersion()
         let company_id = scene.split('=')[1]
         console.log(company_id)
