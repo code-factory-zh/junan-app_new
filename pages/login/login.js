@@ -203,7 +203,6 @@ Page({
                     url: '/pages/index/index'
                 })
             } else {
-                wx.removeStorageSync('open_id')
                 this.getCompanyName()
             }
         })
