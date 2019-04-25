@@ -23,8 +23,8 @@ Page({
         limitSDKVersion: '1.9.0' // 版本兼容
     },
     onLoad: function (options) {
-        let scene = decodeURIComponent(options.scene)
         this.checkVersion()
+        let scene = decodeURIComponent(options.scene)
         let company_id = scene.split('=')[1]
         console.log(company_id)
         if (company_id) {
@@ -203,7 +203,9 @@ Page({
                     url: '/pages/index/index'
                 })
             } else {
-                this.getCompanyName()
+                if (this.data.company_id) {
+                    this.getCompanyName()
+                }
             }
         })
     },
