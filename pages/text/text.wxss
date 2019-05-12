@@ -81,3 +81,6 @@
     font-size: 30rpx;
     color:#333;
 }
+.gray{
+    color: #999;
+}

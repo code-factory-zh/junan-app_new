@@ -13,7 +13,7 @@
         <scroll-view scroll-y="true" class="chapter" wx:if="{{tab===2}}">
             <view class="inner">
                 <view class="line"><view class="line2"></view></view>
-                <view class="title {{chapter_id==item.id?'on':''}}" wx:for="{{chapterList}}" wx:key="{{index}}" bindtap="checkChapterType" data-item="{{item}}"><view class="circle"></view>{{item.num}} {{item.chapter_name}}</view>
+                <view class="title {{chapter_id==item.id?'on':''}} {{item.studied==1?'gray':''}}" wx:for="{{chapterList}}" wx:key="{{index}}" bindtap="checkChapterType" data-item="{{item}}"><view class="circle"></view>{{item.num}} {{item.chapter_name}}</view>
             </view>
         </scroll-view>
         <scroll-view scroll-y="true" class="chapter" wx:if="{{tab===1}}">

@@ -16,7 +16,7 @@
     <view class="selChapter" style="top:{{navHeight}}px" wx:if="{{isShowSelChapter}}" bindtap="_close">
         <scroll-view scroll-y="true" class="scrollContent">
             <view class="selDiv" catchtap="prevent">
-                <view class="chapters" wx:for="{{chapterList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="checkType">第{{index+1}}章：{{item.chapter_name}}</view>
+                <view class="chapters {{item.studied==1?'gray':''}}" wx:for="{{chapterList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="checkType">第{{index+1}}章：{{item.chapter_name}}</view>
             </view>
         </scroll-view>
     </view>
