@@ -11,7 +11,8 @@ Page({
         titleTop: app.globalData.titleTop
     },
     onLoad: function (data) {
-        this.drawCanvas(data.score)
+        console.log(data)
+        this.drawCanvas(data.score, data.isPass)
     },
     goBack: function () {
         wx.navigateBack({
@@ -22,7 +23,7 @@ Page({
         // })
     },
     // 绘制环形成绩
-    drawCanvas: function (score) {
+    drawCanvas: function (score, isPass) {
         console.log(score)
         let x = 96 // x轴
         let y = 96 // y轴
@@ -40,16 +41,10 @@ Page({
         let context = wx.createCanvasContext('scoreCanvas')
         // 分数的描述，<60 不及格 60-70及格 70-80中等 80-90良好 90-100优秀
         let infoDes = ''
-        if (score < 60) {
+        if (parseInt(isPass)) {
+            infoDes = '及格'
+        } else {
             infoDes = '不及格'
-        } else if (score <= 70) {
-             infoDes = '及格'
-        } else if (score <= 80) {
-             infoDes = '中等'
-        } else if (score <= 90) {
-             infoDes = '良好'
-        } else if (score <= 100) {
-             infoDes = '优秀'
         }
         // 绘制深色扇形
         context.setStrokeStyle('#4f7be9')

@@ -77,7 +77,7 @@ Page({
                     if (res.data.hasOwnProperty('score')) {
                         wx.hideLoading()
                         wx.navigateTo({
-                          url: '/pages/scoreInfo/scoreInfo?score=' + res.data.score
+                          url: '/pages/scoreInfo/scoreInfo?score=' + res.data.score + 'isPass=' + res.data.is_pass_exam
                         })
                     } else {
                         this.getFirstQuestionType(item.course_id)

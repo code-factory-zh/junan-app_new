@@ -53,7 +53,7 @@ Page({
             let res = result.data
             if (res.code == 0) {
                 wx.redirectTo({
-                    url: '/pages/scoreInfo/scoreInfo?score=' + res.data.score
+                    url: '/pages/scoreInfo/scoreInfo?score=' + res.data.score + '&isPass=' + res.data.is_pass_exam
                 })
             } else {
                  wx.showToast({
