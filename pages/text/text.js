@@ -1,8 +1,8 @@
 // pages/text/text.js
 import ChapterList from '../../api/chapterList/chapterList'
 const app = getApp()
+var WxParse = require('../../utils/wxParse/wxParse.js');
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -68,6 +68,8 @@ Page({
                 this.setData({
                     chapterData: res.data
                 })
+                let str = res.data.content
+                WxParse.wxParse('article', 'html', str, this, 5);
             } else {
                 wx.showToast({
                     title: res.msg,

@@ -1,4 +1,5 @@
 <!--text.wxml-->
+<import src="../../utils/wxParse/wxParse.wxml"/> 
 <view class="container" style="padding-top:{{navHeight}}px">
     <view class="pageHead" style="height:{{navHeight}}px">
         <image src="/static/img/common/icon-left-black.png" class="goBackImg" style="top:{{backImgTop}}px" bindtap="goBack"></image>
@@ -6,7 +7,7 @@
     </view>
     <!-- <view class="pageHead"><image src="/static/img/common/icon-left-black.png" class="goBackImg" bindtap="goBack"></image>{{chapterData.course_name}}</view> -->
     <view class="title">第{{chapterData.num}}章：{{chapterData.chapter_name}}</view>
-    <view class="content">{{chapterData.content}}</view>
+    <view class="content"><template is="wxParse" data="{{wxParseData:article.nodes}}"/></view>  
     <view class="fixeBtn">
         <view class="shang" bindtap="goShang">上一章</view>
         <view class="mulu" bindtap="getCourseData">目录</view>
