@@ -27,6 +27,9 @@ Page({
         let scene = decodeURIComponent(options.scene)
         let company_id = scene.split('=')[1]
         console.log(company_id)
+        wx.showLoading({
+          title: '加载中',
+        })
         if (company_id) {
             this.setData({
                 company_id: company_id
@@ -197,6 +200,7 @@ Page({
      */
     testOpenid () {
         Login._checkToken().then(result => {
+            wx.hideLoading()
             let res = result.data
             if (res.code == 0) {
                 wx.reLaunch({
